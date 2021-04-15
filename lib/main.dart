@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:study_counter_flutter/controllers/counter_controller.dart';
 
 void main() {
   runApp(MyApp());
@@ -27,21 +28,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  void _decrementCounter() {
-    setState(() {
-      if (_counter > 0) {
-        _counter--;
-      }
-    });
-  }
+  final controller = CounterController();
 
   @override
   Widget build(BuildContext context) {
@@ -57,24 +44,32 @@ class _MyHomePageState extends State<MyHomePage> {
                 'Voce precionou o botao',
               ),
               Text(
-                '$_counter',
+                '${controller.getCounter()}',
                 style: Theme.of(context).textTheme.headline4,
               ),
             ],
           ),
         ),
-        floatingActionButton: Row(
+        floatingActionButton: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             FloatAction(
               iconColor: Colors.green,
               icon: Icon(Icons.add),
-              onPress: _incrementCounter,
+              onPress: () {
+                setState(() {
+                  controller.increment();
+                });
+              },
             ),
             FloatAction(
               iconColor: Colors.red,
               icon: Icon(Icons.remove),
-              onPress: _decrementCounter,
+              onPress: () {
+                setState(() {
+                  controller.decrement();
+                });
+              },
             ),
           ],
         ));

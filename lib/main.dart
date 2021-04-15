@@ -66,23 +66,39 @@ class _MyHomePageState extends State<MyHomePage> {
         floatingActionButton: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Container(
-              margin: EdgeInsets.all(5),
-              child: FloatingActionButton(
-                onPressed: _incrementCounter,
-                tooltip: 'Increment',
-                child: Icon(Icons.add),
-              ),
+            FloatAction(
+              iconColor: Colors.green,
+              icon: Icon(Icons.add),
+              onPress: _incrementCounter,
             ),
-            Container(
-              margin: EdgeInsets.all(5),
-              child: FloatingActionButton(
-                onPressed: _decrementCounter,
-                tooltip: 'Increment',
-                child: Icon(Icons.remove),
-              ),
+            FloatAction(
+              iconColor: Colors.red,
+              icon: Icon(Icons.remove),
+              onPress: _decrementCounter,
             ),
           ],
         ));
+  }
+}
+
+class FloatAction extends StatelessWidget {
+  final Icon icon;
+  final Color iconColor;
+  final Function onPress;
+
+  FloatAction({Key key, this.icon, this.iconColor, this.onPress})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(5),
+      child: FloatingActionButton(
+        onPressed: onPress,
+        tooltip: 'Increment',
+        child: icon,
+        backgroundColor: iconColor,
+      ),
+    );
   }
 }

@@ -35,6 +35,14 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _decrementCounter() {
+    setState(() {
+      if (_counter > 0) {
+        _counter--;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Container(
               margin: EdgeInsets.all(5),
               child: FloatingActionButton(
-                onPressed: _incrementCounter,
+                onPressed: _decrementCounter,
                 tooltip: 'Increment',
                 child: Icon(Icons.remove),
               ),

@@ -1,6 +1,6 @@
 # study_counter_flutter
 
-A new Flutter project.
+![Screenshot counter](.github/Screenshot_1618445083.png)
 
 ## Getting Started
 

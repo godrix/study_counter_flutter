@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:study_counter_flutter/controllers/counter_controller.dart';
+import 'package:study_counter_flutter/views/counter_view.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(App());
 }
 
-class MyApp extends StatelessWidget {
+class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,87 +13,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Meu contador'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  final controller = CounterController();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'Voce precionou o botao',
-              ),
-              Text(
-                '${controller.getCounter()}',
-                style: Theme.of(context).textTheme.headline4,
-              ),
-            ],
-          ),
-        ),
-        floatingActionButton: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            FloatAction(
-              iconColor: Colors.green,
-              icon: Icon(Icons.add),
-              onPress: () {
-                setState(() {
-                  controller.increment();
-                });
-              },
-            ),
-            FloatAction(
-              iconColor: Colors.red,
-              icon: Icon(Icons.remove),
-              onPress: () {
-                setState(() {
-                  controller.decrement();
-                });
-              },
-            ),
-          ],
-        ));
-  }
-}
-
-class FloatAction extends StatelessWidget {
-  final Icon icon;
-  final Color iconColor;
-  final Function onPress;
-
-  FloatAction({Key key, this.icon, this.iconColor, this.onPress})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(5),
-      child: FloatingActionButton(
-        onPressed: onPress,
-        tooltip: 'Increment',
-        child: icon,
-        backgroundColor: iconColor,
-      ),
+      home: CounterPage(title: 'Meu contador'),
     );
   }
 }

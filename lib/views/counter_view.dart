@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:study_counter_flutter/components/FloatAction/main.dart';
 import 'package:study_counter_flutter/controllers/counter_controller.dart';
 
-class App extends StatelessWidget {
+class CounterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

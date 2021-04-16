@@ -8,20 +8,20 @@ class CounterController {
   }
 
   void increment() {
-    model.modifierCounter(1, add);
+    model.modifierCounter(1, _add);
   }
 
-  int add(int number1, int number2) {
+  int _add(int number1, int number2) {
     return number1 + number2;
   }
 
-  int sub(int number1, int number2) {
-    return number2 - number1;
+  int _sub(int number1, int number2) {
+    return number1 - number2;
   }
 
   void decrement() {
     if (model.counter > 0) {
-      model.modifierCounter(1, sub);
+      model.modifierCounter(1, _sub);
     }
   }
 }

@@ -16,6 +16,6 @@ class CounterModel {
   }
 
   void modifierCounter(int valor, Function(int, int) operation) {
-    _counter = operation(valor, _counter);
+    _counter = operation(_counter, valor);
   }
 }
